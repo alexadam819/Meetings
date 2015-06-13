@@ -1,0 +1,34 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.repairTypeBox{
+	box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+	margin:25px;
+	text-align:center;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+
+.repairTypeBox:hover{
+	/*background-color:#888888;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
