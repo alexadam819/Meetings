@@ -16,9 +16,12 @@
 	<h2>Your Meetings</h2>
 	<div class="meeting" ng-repeat="(key, meeting) in meetings">
 		<button class="btn btn-delete" ng-click="deleteMeeting(key)"></button>
-		<span class="text">{{meeting.name}}</span>
+		
+		<a class="btn btn-list"
+			ng-href="#/checkins/{{currentUser.regUser}}/{{key}}/checkinsList"></a>
 			
-		<a class="btn btn-checking"
-			ng-href="#/checkins/{{ currentUser.regUser }}/{{ key }}">Check In</a>
+		<a class="btn btn-checkin"
+			ng-href="#/checkins/{{ currentUser.regUser }}/{{ key }}"></a>
+		<span class="text">{{meeting.name}}</span>
 	</div>
 </section>
