@@ -1,13 +1,19 @@
 myApp.controller('MeetingsController', 
-				function($scope, $firebase) {
-	var ref = new Firebase('https://scorching-inferno-5066.firebaseio.com/meetings');
+				function($scope, $rootScope, $firebase, 
+				CountMeetings, FIREBASE_URL) {
+					
+	var ref = new Firebase(FIREBASE_URL + '/users/' +
+		 $rootScope.currentUser.$id + '/meetings');
 	
-	var meetings = $firebase(ref);
-	 
-	$scope.meetings = meetings.$asObject();
+	var meetingsInfo = $firebase(ref);
+	var meetingsObj = meetingsInfo.$asObject();
+	
+	meetingsObj.$loaded().then(function(data){
+		$scope.meetings = data;
+	});
 	
 	$scope.addMeeting = function() {
-		meetings.$push({
+		meetingsInfo.$push({
 			name: $scope.meetingname,
 			date: Firebase.ServerValue.TIMESTAMP
 		}).then(function() {
@@ -16,6 +22,6 @@ myApp.controller('MeetingsController',
 	}; //addMeeting
 	
 	$scope.deleteMeeting = function(key){
-		meetings.$remove(key);
+		meetingsInfo.$remove(key);
 	};
 });

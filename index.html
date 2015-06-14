@@ -29,15 +29,20 @@
 		<script src="js/lib/angular/angular.min.js"></script>
 		<script src="js/lib/angular/angular-route.min.js"></script>
 		<script src="js/lib/angular/angular-animate.min.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/controllers/registration.js"></script>
-		<script src="js/controllers/meetings.js"></script>
 		
-		<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
-  		<script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
+		
+		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
+  		<script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
 		
 		<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		
+		<script src="js/app.js"></script>
+		<script src="js/services/authentication.js"></script>
+		<script src="js/services/countmeetings.js"></script>
+		<script src="js/controllers/registration.js"></script>
+		<script src="js/controllers/meetings.js"></script>
+		<script src="js/controllers/status.js"></script>
+		<script src="js/controllers/checkins.js"></script>
 		
 		
 		
@@ -50,6 +55,11 @@
 			<nav class="cf" ng-include="'views/nav.html'"></nav>
 		</header>
 		<div class="page">
+			<div class="userInfo" 
+				ng-controller="StatusController" ng-show="currentUser">
+				<span class="userinfo">Hello {{ currentUser.firstname }}</span>
+				<a ng-href="#/logout" ng-click="logout()">logout</a>
+			</div>
 			<main class="cf" ng-view></main>
 		</div>
 
